@@ -9,6 +9,7 @@ extern void requireStr(const char *exp, char *act);
 
 TEST_CASE("ProgressBar", "[progress_bar]") {
     ProgressBar<5> pb{};
+    // TODO: Add some tests for invalid inputs.
 
     SECTION("empty") {
         requireStr("[     ]", pb.update(0, 6));
