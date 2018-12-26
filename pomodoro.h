@@ -4,6 +4,8 @@
 // TODO: Hide this behind a debug.
 #include <iostream>
 
+#include "progress_bar.h"
+
 class Pomodoro {
 public:
     void begin() {
@@ -19,19 +21,10 @@ public:
         // TODO: Make this memory safe.
         unsigned long work_length_ms = minutes_to_ms(_work_length_minutes);
 
-        // TODO: Make this less ugly.
-        unsigned int fraction = 0;
-        if (passed_time_ms <= work_length_ms) {
-            fraction = passed_time_ms * 6 / work_length_ms;
-        } else {
-            fraction = (passed_time_ms - minutes_to_ms(_rest_length_minutes)) * 6
-                        / minutes_to_ms(_rest_length_minutes);
-        }
-
-        char progress[] = "     ";
-        for (unsigned int i = 0; i < fraction; i++) progress[i] = '-';
-        snprintf(&_first_line[0], 17, "[%s] Done: %02lu",
-                progress,
+        _progress_bar.update(passed_time_ms, work_length_ms);
+        
+        snprintf(&_first_line[0], 17, "%s Done: %02lu",
+                _progress_bar.str(),
                 num_periods_passed(time_ms));
 
         return &_first_line[0];
@@ -89,6 +82,8 @@ private:
     // TODO: Get rid of these.
     char _first_line[17] = {};
     char _second_line[17] = {};
+
+    ProgressBar<5> _progress_bar{};
 };
 
 #endif

@@ -15,19 +15,7 @@ public:
         _display[WIDTH + 1] = ']';
         _display[WIDTH + 2] = '\0';
     }
-        // unsigned int fraction = 0;
-        // if (passed_time_ms <= work_length_ms) {
-        //     fraction = passed_time_ms * 6 / work_length_ms;
-        // } else {
-        //     fraction = (passed_time_ms - minutes_to_ms(_rest_length_minutes)) * 6
-        //                 / minutes_to_ms(_rest_length_minutes);
-        // }
-
-        // char progress[] = "     ";
-        // for (unsigned int i = 0; i < fraction; i++) progress[i] = '-';
-        // snprintf(&_first_line[0], 17, "[%s] Done: %02lu",
-        //         progress,
-        //         num_periods_passed(time_ms));
+    
     char *update(unsigned int progress, unsigned int max) {
         // We use WIDTH + 1, because a display of say 5 segments, has 6
         // potential values.
@@ -36,6 +24,10 @@ public:
             _display[1 + i] = (i < fraction) ? '-' : ' ';
         }
 
+        return str();
+    }
+
+    char *str() {
         return &_display[0];
     }
 private:
