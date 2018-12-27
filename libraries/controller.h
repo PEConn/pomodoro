@@ -2,8 +2,10 @@
 #define CONTROLLER_H
 
 #include "button.h"
-#include "timer.h"
 #include "printer.h"
+// TODO: Make this build on tests.
+#include "saved_data.h"
+#include "timer.h"
 
 // TODO: Create library functions (millis <-> minutes).
 // const unsigned long WORK_TIME_MS = 25ul * 60 * 1000;
@@ -16,7 +18,7 @@ public:
     Controller() : _work_timer(WORK_TIME_MS), _rest_timer(REST_TIME_MS) {}
 
     void begin() {
-        // TODO: Load number of completed.
+        _completed = _saved_data.readCompleted();
     }
 
     void loop(unsigned long millis, bool buttonDown) {
@@ -30,8 +32,8 @@ public:
 
         if (timer.completed(millis)) {
             if (_working) {
-                // TODO: Save completed++.
                 _completed++;
+                _saved_data.writeCompleted(_completed);
             }
 
             _working = !_working;
@@ -54,6 +56,7 @@ private:
     Timer _work_timer;
     Timer _rest_timer;
     Printer _printer{};
+    SavedData _saved_data{};
 
     bool _working = true;
     unsigned int _completed = 0;
