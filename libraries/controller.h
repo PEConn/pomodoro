@@ -6,8 +6,10 @@
 #include "printer.h"
 
 // TODO: Create library functions (millis <-> minutes).
-const int WORK_TIME_MS = 25 * 60 * 1000;
-const int REST_TIME_MS = 25 * 60 * 1000;
+// const unsigned long WORK_TIME_MS = 25ul * 60 * 1000;
+// const unsigned long REST_TIME_MS = 5ul * 60 * 1000;
+const unsigned long WORK_TIME_MS = 10ul * 1000;
+const unsigned long REST_TIME_MS = 5ul * 1000;
 
 class Controller {
 public:

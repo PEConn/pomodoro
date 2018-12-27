@@ -12,7 +12,7 @@
 class TimerPrinter {
 public:
     char *update(unsigned long time, unsigned long duration) {
-        char *format = msToMinutes(duration) < 10
+        const char *format = msToMinutes(duration) < 10
                 ? "%lu:%02lu/%lu:%02lu  "
                 : "%02lu:%02lu/%02lu:%02lu";
 
@@ -33,7 +33,7 @@ private:
     }
 
     static unsigned long msToMinutes(unsigned long ms) {
-        return (ms / (1000 * 60)) % 60;
+        return (ms / (1000ul * 60)) % 60;
     }
 
     // TODO: Can I extract common functionality between this and ProgressBar?

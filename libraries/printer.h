@@ -12,11 +12,10 @@
  */
 class Printer {
 public:
-    void update(unsigned int time, unsigned int duration, bool working,
-            unsigned int completed) {
-
+    void update(unsigned long time, unsigned long duration,
+            bool working, unsigned int completed) {
         
-        snprintf(&_top_line[0], _array_size, "%s Done: %2lu",
+        snprintf(&_top_line[0], _array_size, "%s Done: %2u",
             _progress_bar.update(time, duration),
             completed);
 

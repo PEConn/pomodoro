@@ -1,20 +1,23 @@
 #include <LiquidCrystal.h>
 
-#include "../controller.h"
+#include "libraries/controller.h"
 
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 Controller controller{};
 
 void setup() {
   lcd.begin(16, 2);
+  pinMode(7, INPUT);
+  Serial.begin(9600);
+  controller.begin();
 }
 
 void loop() {
-  controller.loop(millis(), false);
+  controller.loop(millis(), digitalRead(7));
   lcd.setCursor(0, 0);
   lcd.print(controller.getTopLine());
   lcd.setCursor(0, 1);
   lcd.print(controller.getBottomLine());
   
-  delay(100);
+  delay(500);
 }
