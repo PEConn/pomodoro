@@ -4,9 +4,6 @@
 
 #include "timer.h"
 
-// TODO: Move this into a header.
-extern void requireStr(const char *exp, char *act);
-
 TEST_CASE("Timer", "[timer]") {
     Timer timer{500};
 

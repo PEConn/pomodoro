@@ -11,13 +11,12 @@ public:
     ProgressBar() {
         _display[0] = '[';
         
-        // TODO: Make these not magic numbers.
-        _display[WIDTH + 1] = ']';
-        _display[WIDTH + 2] = '\0';
+        _display[_array_size - 2] = ']';
+        _display[_array_size - 1] = '\0';
     }
     
     char *update(unsigned int progress, unsigned int max) {
-        // We use WIDTH + 1, because a display of say 5 segments, has 6
+        // We use WIDTH + 1, because a display of say 5 segments has 6
         // potential values.
         unsigned int fraction = progress * (WIDTH + 1) / max;
         for (unsigned int i = 0; i < WIDTH; i++) {
@@ -31,8 +30,10 @@ public:
         return &_display[0];
     }
 private:
-    // Plus 2 to hold the brackets and plus 1 for the null terminator.
-    char _display[WIDTH + 2 + 1];
+    // Plus 2 for the '[]' and plus 1 for '\0'
+    static constexpr unsigned int _array_size = WIDTH + 2 + 1;
+    
+    char _display[_array_size];
 };
 
 #endif
