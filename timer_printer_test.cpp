@@ -46,7 +46,7 @@ TEST_CASE("TimerPrinter", "[timer_printer]") {
         // 112 -> 52 because we modulus minutes to 60.
         requireStr("07:31/52:00", tp.update(ms(7, 31), ms(112, 0)));
         // 12 -> 12 because we don't enforce time < duration.
-        requireStr("12:12/5:00  ", tp.update(ms(12, 12), ms(5, 0)));
+        requireStr("12:12/5:00 ", tp.update(ms(12, 12), ms(5, 0)));
     }
 
     SECTION("column selection") {
