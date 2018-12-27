@@ -3,6 +3,7 @@
 
 #include "button.h"
 #include "timer.h"
+#include "printer.h"
 
 // TODO: Create library functions (millis <-> minutes).
 const int WORK_TIME_MS = 25 * 60 * 1000;
@@ -28,20 +29,32 @@ public:
         if (timer.completed(millis)) {
             if (_working) {
                 // TODO: Save completed++.
+                _completed++;
             }
 
             _working = !_working;
             timer.reset();
         }
+        
+        _printer.update(timer.elapsed(millis), timer.duration(),
+                _working, _completed);
+    }
 
-        // TODO: Display timer.
+    char *getTopLine() {
+        return _printer.getTopLine();
+    }
+
+    char *getBottomLine() {
+        return _printer.getBottomLine();
     }
 private:
     Button _button{};
     Timer _work_timer;
     Timer _rest_timer;
+    Printer _printer{};
 
     bool _working = true;
+    unsigned int _completed = 0;
 };
 
 #endif
