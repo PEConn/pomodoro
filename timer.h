@@ -23,6 +23,20 @@ public:
         _last_start = 0;
     }
 
+    void toggle(unsigned long millis) {
+        if (_running) {
+            stop(millis);
+        } else {
+            start(millis);
+        }
+    }
+
+    void reset() {
+        _elapsed = 0;
+        _last_start = 0;
+        _running = false;
+    }
+
     bool completed(unsigned long millis) {
         return elapsed(millis) >= _duration;
     }
@@ -33,8 +47,12 @@ public:
         }
         return _elapsed;
     }
+
+    unsigned long duration() {
+        return _duration;
+    }
 private:
-    unsigned long _duration;
+    const unsigned long _duration;
     unsigned long _elapsed = 0;
     bool _running = false;
     unsigned long _last_start = 0;
