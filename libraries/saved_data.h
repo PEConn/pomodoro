@@ -10,7 +10,7 @@
 class Eeprom {
 public:
     // The real read returns a 'byte', which is an unsigned char.
-    unsigned char read(int address) {}
+    unsigned char read(int address) { return 666; }
     void update(int address, unsigned char value) {}
 };
 
