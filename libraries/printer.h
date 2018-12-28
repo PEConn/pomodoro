@@ -1,6 +1,8 @@
 #ifndef PRINTER_H
 #define PRINTER_H
 
+#include <stdio.h>
+
 #include "progress_bar.h"
 #include "timer_printer.h"
 

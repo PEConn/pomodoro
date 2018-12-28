@@ -1,9 +1,8 @@
 #ifndef TIMER_PRINTER_H
 #define TIMER_PRINTER_H
 
+#include <stdio.h>
 
-// TODO: Do this really need to be a class? I'm not using polymorphism
-// for testing, so I'm not gaining anything over just functions.
 /**
  * Gives a string representation of a Timer, takes 11 characters as such:
  * |16:31/25:00|

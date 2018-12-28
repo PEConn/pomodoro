@@ -3,9 +3,10 @@
 #define COMPILE_FOR_DEVICE true
 
 #include "libraries/controller.h"
+#include "libraries/util.h"
 
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
-Controller controller{};
+Controller controller{ms(25, 0), ms(5, 0)};
 
 void setup() {
   lcd.begin(16, 2);

@@ -6,22 +6,17 @@
 #include "saved_data.h"
 #include "timer.h"
 
-// TODO: Create library functions (millis <-> minutes).
-// const unsigned long WORK_TIME_MS = 25ul * 60 * 1000;
-// const unsigned long REST_TIME_MS = 5ul * 60 * 1000;
-const unsigned long WORK_TIME_MS = 10ul * 1000;
-const unsigned long REST_TIME_MS = 5ul * 1000;
-
 class Controller {
 public:
-    Controller() : _work_timer(WORK_TIME_MS), _rest_timer(REST_TIME_MS) {}
+    Controller(unsigned long work_duration_ms, unsigned long rest_duration_ms)
+            : _work_timer(work_duration_ms), _rest_timer(rest_duration_ms) {}
 
     void begin() {
         _completed = _saved_data.readCompleted();
     }
 
-    void loop(unsigned long millis, bool buttonDown) {
-        _button.updateState(buttonDown);
+    void loop(unsigned long millis, bool button_down) {
+        _button.updateState(button_down);
 
         Timer &timer = _working ? _work_timer : _rest_timer;
 

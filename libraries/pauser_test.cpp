@@ -1,6 +1,6 @@
-#include "catch.hpp"
-
 #include "pauser.h"
+
+#include "catch.hpp"
 
 TEST_CASE("Pauser works correctly", "[pauser]") {
     Pauser pauser{};

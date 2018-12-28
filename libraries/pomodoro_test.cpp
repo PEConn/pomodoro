@@ -1,14 +1,7 @@
-#include <string>
-
-#include "catch.hpp"
-
 #include "pomodoro.h"
 
-void requireStr(const char *exp, char *act) {
-    // We convert the char * to std::string so that we get nice output on
-    // errors.
-    REQUIRE(std::string(exp) == std::string(act));
-}
+#include "catch.hpp"
+#include "test_util.h"
 
 TEST_CASE("Time output is correct", "[output]") {
     Pomodoro pm{};

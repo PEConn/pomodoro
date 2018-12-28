@@ -1,11 +1,7 @@
-#include <string>
-
-#include "catch.hpp"
-
 #include "progress_bar.h"
 
-// TODO: Move this into a header.
-extern void requireStr(const char *exp, char *act);
+#include "catch.hpp"
+#include "test_util.h"
 
 TEST_CASE("ProgressBar", "[progress_bar]") {
     ProgressBar<5> pb{};

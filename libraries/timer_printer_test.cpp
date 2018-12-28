@@ -1,15 +1,8 @@
-#include <string>
-
-#include "catch.hpp"
-
 #include "timer_printer.h"
 
-// TODO: Move this into a header.
-extern void requireStr(const char *exp, char *act);
-
-unsigned long ms(int minutes, int seconds) {
-    return minutes * 60 * 1000 + seconds * 1000;
-}
+#include "catch.hpp"
+#include "test_util.h"
+#include "util.h"
 
 TEST_CASE("TimerPrinter", "[timer_printer]") {
     TimerPrinter tp{};

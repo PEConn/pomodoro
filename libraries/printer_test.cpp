@@ -1,10 +1,8 @@
-#include "catch.hpp"
-
 #include "printer.h"
 
-// TODO: Move this into a header.
-extern void requireStr(const char *exp, char *act);
-extern unsigned long ms(int minutes, int seconds);
+#include "catch.hpp"
+#include "test_util.h"
+#include "util.h"
 
 TEST_CASE("Printer", "[printer]") {
     Printer p{};

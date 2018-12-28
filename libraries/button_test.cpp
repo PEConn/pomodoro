@@ -1,6 +1,6 @@
-#include "catch.hpp"
-
 #include "button.h"
+
+#include "catch.hpp"
 
 TEST_CASE("Button works correctly", "[button]") {
     Button button{};

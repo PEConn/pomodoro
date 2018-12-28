@@ -1,8 +1,6 @@
-#include <string>
+#include "timer.h"
 
 #include "catch.hpp"
-
-#include "timer.h"
 
 TEST_CASE("Timer", "[timer]") {
     Timer timer{500};
