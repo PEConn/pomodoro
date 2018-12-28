@@ -1,5 +1,7 @@
 #include <LiquidCrystal.h>
 
+#define COMPILE_FOR_DEVICE true
+
 #include "libraries/controller.h"
 
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);

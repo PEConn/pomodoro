@@ -1,7 +1,22 @@
 #ifndef SAVED_DATA_H
 #define SAVED_DATA_H
 
+#ifdef COMPILE_FOR_DEVICE
+
 #include <EEPROM.h>
+
+#else
+
+class Eeprom {
+public:
+    // The real read returns a 'byte', which is an unsigned char.
+    unsigned char read(int address) {}
+    void update(int address, unsigned char value) {}
+};
+
+Eeprom EEPROM{};
+
+#endif
 
 class SavedData {
 public:

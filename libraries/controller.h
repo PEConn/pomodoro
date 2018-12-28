@@ -3,7 +3,6 @@
 
 #include "button.h"
 #include "printer.h"
-// TODO: Make this build on tests.
 #include "saved_data.h"
 #include "timer.h"
 
